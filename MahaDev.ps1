@@ -479,3 +479,70 @@ Remove-Item .\test1
 
 New-Item -Name file1.txt -ItemType File -Value "Har Har MahaDev" -Path .\test1\
 Get-Content .\test1/file1.txt
+
+
+# ------------------------------------------------------------- x ----------------------------------------------------------
+
+<#
+10-09-2024
+----------
+#>
+
+
+# String Creation
+
+$FirstName = "Pratul"
+$Surname = "Bhatt"
+
+# String Concatenation
+
+"Hi, My Name is " + $FirstName.ToUpper() + " and my surname is " + $Surname.ToUpper() + ", nice to meet you."
+
+# String Interpolation
+
+"Hi, My Name is $FirstName and my surname is $($Surname.ToUpper()), nice to meet you."
+
+# -f
+
+"Hi, My Name is {0} and my surname is {1}, nice to meet you" -f $FirstName, $Surname.ToUpper()
+
+
+Update-Help
+Get-Help bitlocker
+
+
+# Joining Strings
+
+$FullName = "$FirstName $Surname"
+$FullName
+
+# String method
+
+$FullName
+$FullName.IndexOf(' ')
+$index = $FullName.IndexOf(' ')
+
+$FullName.Substring($index + 1)
+
+
+# Creating a username with three first letter of firstname, followed by underscore, followed by surname  from fullname.
+
+$FullName
+$FullName.IndexOf(' ')
+$index = $FullName.IndexOf(' ')
+
+$Fir = $FullName.Substring(0, 3)
+$Sur = $FullName.Substring($index + 1)
+
+$UserName = "{0}_{1}" -f $Fir, $Sur
+$UserName 
+
+# PowerShell equavalent of grep
+
+vssadmin list shadows | Select-String "creation time:" -Context 1,4
+Get-Content C:\windows10upgrade.log | Select-String "Error"
+
+
+# Regex - Regular Expression https://regexr.com/
+
+$time | Select-String -Pattern '(\d+\.\d+s)$'
