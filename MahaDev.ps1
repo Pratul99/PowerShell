@@ -31,6 +31,7 @@ $a | Select-Object -Last 20 | Select-Object Status, Name | Export-Csv .\test.csv
 
 $a | Where-Object{$_.Status -eq "Running"} | Select-Object -Last 10 | Format-List
 
+# To load content in PowerShell Memory.
 $b = Get-Content .\ps\1.txt
 $c = Get-Content .\ps\2.txt
 
@@ -157,7 +158,11 @@ Get-Member -InputObject $arrlist
 
 $arrlist.Add(1)
 $arrlist.Add("A") | Out-Null
+
+# Remove all elements from an array list object.
 $arrlist.Clear()
+
+# Remove a specific element from an array list object.
 $arrlist.Remove()
 
 $arrlist
@@ -546,3 +551,7 @@ Get-Content C:\windows10upgrade.log | Select-String "Error"
 # Regex - Regular Expression https://regexr.com/
 
 $time | Select-String -Pattern '(\d+\.\d+s)$'
+
+
+# ------------------------------------------------------------- x ----------------------------------------------------------
+
