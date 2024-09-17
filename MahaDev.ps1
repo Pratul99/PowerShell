@@ -555,3 +555,18 @@ $time | Select-String -Pattern '(\d+\.\d+s)$'
 
 # ------------------------------------------------------------- x ----------------------------------------------------------
 
+
+<#
+17-09-2024
+----------
+#>
+
+# The shorthand for Where-Object in PowerShell is ?.
+
+Example:
+
+Get-Process | ? { $_.Name -like "chrome*" } 
+
+# This command is equivalent to:
+
+Get-Process | Where-Object { $_.Name -like "chrome*" } 
