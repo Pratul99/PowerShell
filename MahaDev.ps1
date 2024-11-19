@@ -11,7 +11,7 @@ $PSVersionTable
 ($true).GetType()
 
 # In PS if you want to make user defined variable use "$"
-$name = Pratul
+$name = "Pratul"
 $name
     
 # Variables are not case sensitive.
@@ -27,7 +27,7 @@ $a = Get-Service
 $a | Select-Object -Last 20 | Select-Object Status, Name | Export-Csv .\test.csv -NoTypeInformation
 
 # $_ = $PSItem (Pipeline variable)
-# Format-List,Table has to be used at the end because after it other cmds can't be used.
+# Tee-Object, Format-List,Table has to be used at the end because after it other cmds can't be used.
 
 $a | Where-Object{$_.Status -eq "Running"} | Select-Object -Last 10 | Format-List
 
@@ -44,7 +44,6 @@ $d | Select-Object -Last 2 | Select-Object Name, Location
 
 #expression
 $d | Select-Object -Last 2 | Select-Object Name, @{l="Location";e={$_.Place}}
-
 
 # ------------------------------------------------------------- x ----------------------------------------------------------
 
@@ -570,3 +569,28 @@ Get-Process | ? { $_.Name -like "chrome*" }
 # This command is equivalent to:
 
 Get-Process | Where-Object { $_.Name -like "chrome*" } 
+
+
+# ------------------------------------------------------------- x ----------------------------------------------------------
+
+<#
+19-11-2024
+----------
+#>
+
+`n is used for new line.
+
+# ex. 
+
+"Cat `nDog `nCamel"
+
+# We can declar objects like ex. 1,2,4    or  1...20
+
+# user "Recurse" to get the list of item inside child item
+ex. Get-ChildItem -Path "///" -Recurse -Force
+
+# Join & split statments
+
+ex. $a = "A", "B", "C"
+
+$a -split ","
