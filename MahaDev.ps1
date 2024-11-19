@@ -588,3 +588,9 @@ Get-Process | Where-Object { $_.Name -like "chrome*" }
 
 # user "Recurse" to get the list of item inside child item
 ex. Get-ChildItem -Path "///" -Recurse -Force
+
+# Join & split statments
+
+ex. $a = "A", "B", "C"
+
+$a -split ","
