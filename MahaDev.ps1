@@ -252,7 +252,7 @@ while($a -le 10)
 Do While loop
 -------------
 
-In do-while loop condition is checked after body is executed atleast once even if condition is false.
+In do-while loop condition is checked after body is executed, when we need to run loop atleast once we use do while loop.
 #>
 
 $b = 1;
@@ -261,6 +261,14 @@ do {
     $b++
 }
 while($b -le 10)
+
+
+$i =6
+do {
+    Write-Output "$i / 2 = $($i/2)"
+    $i++
+}
+while($i -le 5)
 
 
 <#
@@ -353,6 +361,8 @@ ForEach-Object
 #>
 
 Get-Service | ForEach-Object {Write-Host "The service is $($_.Name)"}
+
+
 
 
 <#
@@ -584,7 +594,7 @@ Get-Process | Where-Object { $_.Name -like "chrome*" }
 
 "Cat `nDog `nCamel"
 
-# We can declar objects like ex. 1,2,4    or  1...20
+# We can declar objects like ex. $a = 1,2,4    or  1...20
 
 # user "Recurse" to get the list of item inside child item
 ex. Get-ChildItem -Path "///" -Recurse -Force
@@ -594,3 +604,87 @@ ex. Get-ChildItem -Path "///" -Recurse -Force
 ex. $a = "A", "B", "C"
 
 $a -split ","
+
+
+# ------------------------------------------------------------- x ----------------------------------------------------------
+
+<#
+20-11-2024
+----------
+#>
+
+# If else statement
+
+$a = 17
+$c = $a%2
+
+if ($c -eq 0) {
+    Write-Output "The Number is even"
+}
+else {
+        Write-Output "The Number is not even"
+    }
+
+
+
+
+# else if statement
+
+$a = 0
+if ($a -gt 0) {
+    Write-oitput "The Number greater then Zero"
+}
+elseif ($a -lt 0) {
+    Write-Output "The Number is less then Zero"
+}
+else {
+    Write-Output "The Number is Zero"
+}
+
+
+$time = Get-Date -Format HH
+
+if ($time -le 10) {
+    Write-Output "Good Morning !!"
+}
+elseif ($time -le 20) {
+    Write-Output "Good Day"
+}
+else {
+    Write-Output "Good Evening"
+}
+
+
+
+# Switch statement
+
+$a = Read-Host -Prompt "Write enter between 1 & 3"
+
+$a
+
+switch ($a) {
+    1 {$r = "One"}
+    2 {$r = "Two"; break }
+    3 {$r = "Three"}
+    2 {$r = "Four"}
+    Default {$r = "One"}
+}
+$r
+
+or you can write above as below as well.
+
+$a = Read-Host -Prompt "Enter your Fav num of the week:"
+
+$r = switch ($a) {
+    0 {"Sunday"}
+    1 {"Monday"}
+    2 {"Tuesday"}
+    3 {"Wednesday"}
+    4 {"Thursday"; break}
+    5 {"Friday"}
+    6 {"Saturday"}
+    4 {"yoyo"}
+    Default {"Friday"}
+}
+
+$r
