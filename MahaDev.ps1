@@ -130,6 +130,7 @@ Dynamic Array = Array list
 Method will have (), properties does not have.
 #>
 
+# Arrey Sub-Expression operator.
 $arr = @()    # empty array
 
 $arr += "A"   # Add somwthing is array, it just create new array doesn't add to existing array.
@@ -145,6 +146,10 @@ $arr[-1]
 
 $arr.Length
 $arr.Contains("Z")
+
+
+# Set value method  
+$a.setvalue(250,1) # This set the valueof index 1 to 250
 
 Get-Member -InputObject $arr
 
@@ -190,16 +195,20 @@ $p["Name"]
 $p.Name = "Bhatt Ji"
 
 $p.Add("Height", 5.10)
+$p.Remove("Name")
 $p.GetEnumerator()
 
 $p
+
+# Ordered distionary
+
+$p = [ordered] @{ Name = "Pratul"; Age = 25; Location = "Delhi"}
 
 # ------------------------------------------------------------- x ----------------------------------------------------------
 
 <#
 Comment block
 #>
-
 # ------------------------------------------------------------- x ----------------------------------------------------------
 
 <#
@@ -479,6 +488,25 @@ catch {
 #Endregion
 
 
+<#
+02-12-2024
+----------
+#>
+
+# A try block can have multiple catch block for different type of errors.
+
+# The finally block in PowerShell is a reliable way to execute cleanup or finalization code regardless of success or failure in the preceding try or catch blocks.
+try {
+    # Code that might throw an exception
+}
+catch {
+    # Code to handle exceptions
+}
+finally {
+    # Code that always runs, whether or not an exception occurred
+}
+
+
 # ------------------------------------------------------------- x ----------------------------------------------------------
 
 
@@ -561,6 +589,25 @@ Get-Content C:\windows10upgrade.log | Select-String "Error"
 
 $time | Select-String -Pattern '(\d+\.\d+s)$'
 
+<#
+02-12-2024
+----------
+#>
+
+# Character groups in Regex
+'big' -match 'b[oiu]g'
+
+# Character ranges
+99 -match '[0-9][0-9]'
+
+# Word character  '\w' mean all from a-z & A-Z & 0-9
+'Book' -match '\w'
+
+# \d sub expression
+'123-456-7891' -match '\d{3}-\d{3}-\d{4}'
+
+# Anchor in regex
+'boating' -match '^boat$'
 
 # ------------------------------------------------------------- x ----------------------------------------------------------
 
@@ -688,3 +735,44 @@ $r = switch ($a) {
 }
 
 $r
+
+
+# ------------------------------------------------------------- x ----------------------------------------------------------
+
+<#
+02-12-2024
+----------
+#>
+
+
+# Alias
+
+New-Alias -Name svc -Value Get-Service
+svc
+
+# Get Alias
+
+Get-Alias
+Get-Alias -Name svc
+
+# Export Alias
+Export-Alias -Path E:\Downloads\export.txt -Name svc 
+
+# To prevent overwrite use NoClobber
+Export-Alias -Path E:\Downloads\export.txt -Name svc -NoClobber
+
+# --------------------------------- x ----------------------------------
+
+# To open all file in a dir
+Invoke-Item -Path "E:\Downloads\*.txt"
+
+# Set service
+# Example to change display name of any service.  Set-Service -Name notepad -DisplayName NN or  Set-Service -Name PhoneSvc -StartupType Automatic
+
+
+# ------------------------------------------------------------- x ----------------------------------------------------------
+
+<#
+02-12-2024
+----------
+#>
